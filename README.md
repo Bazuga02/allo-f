@@ -1,70 +1,86 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Allo Meals: React-based Meal Selection Web App
+# Project Overview
 
-## Available Scripts
+This project is a React-based web application designed for meal selection. It includes features such as user authentication, meal filtering by tags, dynamic pricing, and integration with a backend server. The site is deployed and accessible at [https://allo-meals.netlify.app/](https://allo-meals.netlify.app/). Please note that as it's hosted on a free service, it may take a few seconds to load initially.
 
-In the project directory, you can run:
+## Key Features
 
-### `npm start`
+- **User Authentication**: Allows users to sign up and log in securely.
+- **Meal Selection**: Users can select meals for two persons, with options filtered by tags.
+- **Dynamic Pricing**: Real-time calculation of total prices based on selected meals.
+- **Responsive Design**: Ensures optimal viewing experience across various devices.
+- **Animation and Notifications**: Utilizes React Lottie for animations and React Hot Toast for user notifications.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Setup and Test Locally
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Prerequisites
 
-### `npm test`
+Ensure you have the following installed on your system:
+- [Node.js](https://nodejs.org/) (v12.x or higher)
+- [npm](https://www.npmjs.com/) (v6.x or higher)
+- MongoDB installed and running locally (for backend setup)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Local Setup Instructions
 
-### `npm run build`
+1. **Clone the Frontend and Backend Repositories:**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   Create a project folder and clone both repositories into it:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   mkdir allo-meals-project
+   cd allo-meals-project
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   # Clone frontend repository
+   git clone https://github.com/Bazuga02/allo-f.git frontend
 
-### `npm run eject`
+   # Clone backend repository
+   git clone https://github.com/Bazuga02/allo-b.git backend
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. **Setup Backend (Node.js and MongoDB):**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```bash
+   cd backend
+   npm install
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   Ensure MongoDB is running locally. Configure MongoDB URI in `backend/.env` file if necessary.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. **Run Backend Server:**
 
-## Learn More
+   ```
+   npm start
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   The backend server should now be running on [http://localhost:1000](http://localhost:1000).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. **Setup Frontend (React):**
 
-### Code Splitting
+   ```bash
+   cd ../frontend
+   npm install
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+5. **Run Frontend Development Server:**
 
-### Analyzing the Bundle Size
+   ```bash
+   npm start
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+   The frontend development server should now be running on [http://localhost:3000](http://localhost:3000).
 
-### Making a Progressive Web App
+## API Responses
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Meals Endpoint (`/meals`)
+This endpoint provides JSON responses for meals and labels fetched from `meals-data`.
 
-### Advanced Configuration
+### Authentication Endpoints (Login and Signup)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Endpoints for user authentication using MongoDB are implemented in the backend.
 
-### Deployment
+## Additional Notes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **React Lottie Animation**: Used for animated visuals in the UI.
+- **React Hot Toast**: Provides toast notifications for user interactions.
+- **Responsive Design**: Ensures the application adapts well to different screen sizes.
