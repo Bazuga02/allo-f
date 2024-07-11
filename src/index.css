@@ -1,13 +1,54 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes wiggle {
+  0% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+  100% {
+    transform: rotate(-2deg);
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@import url("https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap");
+
+.font-merienda-300 {
+  font-family: "Merienda", cursive;
+  font-weight: 300;
+}
+
+.font-merienda-400 {
+  font-family: "Merienda", cursive;
+  font-weight: 400;
+}
+
+.font-merienda-500 {
+  font-family: "Merienda", cursive;
+  font-weight: 500;
+}
+
+.font-merienda-600 {
+  font-family: "Merienda", cursive;
+  font-weight: 600;
+}
+
+.font-merienda-700 {
+  font-family: "Merienda", cursive;
+  font-weight: 700;
+}
+
+.font-merienda-800 {
+  font-family: "Merienda", cursive;
+  font-weight: 800;
+}
+
+.font-merienda-900 {
+  font-family: "Merienda", cursive;
+  font-weight: 900;
+  word-spacing: 5px;
+  letter-spacing: .1px;
 }
