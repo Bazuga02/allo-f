@@ -1,8 +1,12 @@
-
 # Allo Meals: React-based Meal Selection Web App
+
 # Project Overview
 
 This project is a React-based web application designed for meal selection. It includes features such as user authentication, meal filtering by tags, dynamic pricing, and integration with a backend server. The site is deployed and accessible at [https://allo-meals.netlify.app/](https://allo-meals.netlify.app/). Please note that as it's hosted on a free service, it may take a few seconds to load initially.
+
+![Login](login.png)
+![Signup](signup.png)
+![Home](home.png)
 
 ## Key Features
 
@@ -17,6 +21,7 @@ This project is a React-based web application designed for meal selection. It in
 ### Prerequisites
 
 Ensure you have the following installed on your system:
+
 - [Node.js](https://nodejs.org/) (v12.x or higher)
 - [npm](https://www.npmjs.com/) (v6.x or higher)
 - MongoDB installed and running locally (for backend setup)
@@ -73,6 +78,7 @@ Ensure you have the following installed on your system:
 ## API Responses
 
 ### Meals Endpoint (`/meals`)
+
 This endpoint provides JSON responses for meals and labels fetched from `meals-data`.
 
 ### Authentication Endpoints (Login and Signup)

@@ -87,6 +87,7 @@ function App() {
                             Select Meals
                           </span>
                         </div>
+                          <p className=" italic">Wait some seconds for items to load 🕐...</p>
                         <div className="text-3xl font-semibold mb-4 font-mono underline hidden lg:block">
                           Order Summary
                         </div>
