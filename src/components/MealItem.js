@@ -15,7 +15,7 @@ function MealItem({ meal, onSelect, onDeselect, isSelected }) {
   };
 
   return (
-    <div className="meal-item p-4 border rounded shadow mb-4">
+    <div className="meal-item p-4 border rounded shadow mb-4 bg-white">
       <img
         src={
           imageError
