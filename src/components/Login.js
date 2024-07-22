@@ -1,12 +1,15 @@
 import Lottie from "lottie-react";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "./store/authSlice";
 import animation from "../components/photos/loginanim.json";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const Login = ({ setIsAuthenticated }) => {
+const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showAnimation, setShowAnimation] = useState(true);
@@ -29,7 +32,6 @@ const Login = ({ setIsAuthenticated }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Check if fields are empty
     if (!email || !password) {
       toast.error("All fields are required.");
       return;
@@ -44,7 +46,7 @@ const Login = ({ setIsAuthenticated }) => {
         }
       );
       localStorage.setItem("token", res.data.token);
-      setIsAuthenticated(true);
+      dispatch(login());
       navigate("/");
     } catch (err) {
       console.error(err);

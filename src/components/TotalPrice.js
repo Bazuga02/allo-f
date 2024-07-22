@@ -1,21 +1,27 @@
+// components/TotalPrice.js
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import waitress from "./photos/waitress.png";
 import noorderanim from "./photos/noorederanim.json";
 import Lottie from "lottie-react";
 import orderconfirmed from "./photos/order-con.jpg";
 import toast from "react-hot-toast";
+import { deselectMeal } from "./store/mealsSlice";
 
-function TotalPrice({
-  selectedMealsPerson1,
-  selectedMealsPerson2,
-  meals,
-  isAuthenticated,
-  setSelectedMealsPerson1,
-  setSelectedMealsPerson2,
-}) {
+function TotalPrice() {
   const [orderConfirmed, setOrderConfirmed] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const selectedMealsPerson1 = useSelector(
+    (state) => state.meals.selectedMealsPerson1
+  );
+  const selectedMealsPerson2 = useSelector(
+    (state) => state.meals.selectedMealsPerson2
+  );
+  const meals = useSelector((state) => state.meals.meals);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   const calculateTotal = (selectedMeals) => {
     return Object.entries(selectedMeals).reduce(
@@ -33,19 +39,7 @@ function TotalPrice({
   const totalPerson2 = calculateTotal(selectedMealsPerson2);
 
   const handleDeleteMeal = (person, mealId) => {
-    if (person === 1) {
-      setSelectedMealsPerson1((prev) => {
-        const newMeals = { ...prev };
-        delete newMeals[mealId];
-        return newMeals;
-      });
-    } else {
-      setSelectedMealsPerson2((prev) => {
-        const newMeals = { ...prev };
-        delete newMeals[mealId];
-        return newMeals;
-      });
-    }
+    dispatch(deselectMeal({ mealId, person }));
   };
 
   const renderMealDetails = (selectedMeals, person) => {
@@ -54,7 +48,7 @@ function TotalPrice({
         ? "https://img.icons8.com/?size=100&id=NTPjDyGAVp1r&format=png&color=40C057"
         : "https://img.icons8.com/?size=100&id=8439&format=png&color=40C057";
     const mealImageAlt = person === 1 ? "meal" : "meal2";
-  
+
     return Object.entries(selectedMeals).map(([mealId, { drinkId }], index) => {
       const meal = meals.find((m) => m.id === mealId);
       const drink = meal.drinks.find((d) => d.id === drinkId);
@@ -67,7 +61,9 @@ function TotalPrice({
                 alt={mealImageAlt}
                 className={person === 1 ? "h-11" : "h-10"}
               />
-              <span className="font-bold">P{person} - {meal.title} - {drink ? drink.title : "No Drink"}</span>
+              <span className="font-bold">
+                P{person} - {meal.title} - {drink ? drink.title : "No Drink"}
+              </span>
             </div>
             <button
               onClick={() => handleDeleteMeal(person, mealId)}

@@ -1,6 +1,12 @@
+// components/PersonSelector.js
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setCurrentPerson } from "./store/mealsSlice";
 
-function PersonSelector({ currentPerson, setCurrentPerson }) {
+function PersonSelector() {
+  const dispatch = useDispatch();
+  const currentPerson = useSelector((state) => state.meals.currentPerson);
+
   return (
     <div className="person-selector flex flex-wrap gap-2 m-4 items-center">
       <div className="flex items-center bg-neutral-900 p-1 rounded-lg w-full sm:w-[8vw] justify-center mb-2 sm:mb-0">
@@ -12,7 +18,7 @@ function PersonSelector({ currentPerson, setCurrentPerson }) {
         <p className="text-white font-semibold">Persons</p>
       </div>
       <button
-        onClick={() => setCurrentPerson(1)}
+        onClick={() => dispatch(setCurrentPerson(1))}
         className={`px-8 border-2 border-green-500 py-2 rounded hover:scale-105 transition-all duration-150 w-full sm:w-auto ${
           currentPerson === 1
             ? "bg-green-300 font-semibold border-none"
@@ -22,7 +28,7 @@ function PersonSelector({ currentPerson, setCurrentPerson }) {
         Person 1
       </button>
       <button
-        onClick={() => setCurrentPerson(2)}
+        onClick={() => dispatch(setCurrentPerson(2))}
         className={`px-8 border-2 border-green-500 py-2 rounded hover:scale-105 transition-all duration-150 w-full sm:w-auto ${
           currentPerson === 2
             ? "bg-green-300 font-semibold border-none"

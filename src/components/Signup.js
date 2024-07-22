@@ -1,12 +1,15 @@
 import Lottie from "lottie-react";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "./store/authSlice";
 import animation from "../components/photos/signupanim.json";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const Signup = ({ setIsAuthenticated }) => {
+const Signup = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -63,7 +66,7 @@ const Signup = ({ setIsAuthenticated }) => {
         }
       );
       localStorage.setItem("token", res.data.token);
-      setIsAuthenticated(true);
+      dispatch(login());
       toast.success("Signup successful!");
       navigate("/");
     } catch (err) {

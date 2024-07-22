@@ -1,12 +1,15 @@
+// components/TagFilter.js
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleLabel } from "./store/mealsSlice";
 
-function TagFilter({ labels, selectedLabels, setSelectedLabels }) {
-  const toggleLabel = (labelId) => {
-    setSelectedLabels((prevLabels) =>
-      prevLabels.includes(labelId)
-        ? prevLabels.filter((id) => id !== labelId)
-        : [...prevLabels, labelId]
-    );
+function TagFilter() {
+  const dispatch = useDispatch();
+  const labels = useSelector((state) => state.meals.labels);
+  const selectedLabels = useSelector((state) => state.meals.selectedLabels);
+
+  const handleToggleLabel = (labelId) => {
+    dispatch(toggleLabel(labelId));
   };
 
   return (
@@ -22,7 +25,7 @@ function TagFilter({ labels, selectedLabels, setSelectedLabels }) {
       {labels.map((label) => (
         <button
           key={label.id}
-          onClick={() => toggleLabel(label.id)}
+          onClick={() => handleToggleLabel(label.id)}
           className={`px-4 py-2 rounded-full font-semibold hover:scale-105 transition-all duration-150 w-full sm:w-auto ${
             selectedLabels.includes(label.id)
               ? "bg-blue-400 text-white hover:bg-blue-600"
