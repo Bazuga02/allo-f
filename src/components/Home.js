@@ -4,20 +4,22 @@ import ani1 from "./photos/home1.json";
 
 const Home = ({ onOrderNowClick }) => {
   return (
-    <div className="h-[80vh] w-full bg-green-500 rounded-lg flex items-center justify-center p-2">
-      <div>
-        <Lottie animationData={ani1} />
+    <div className="h-auto md:h-[80vh] w-full bg-green-500 rounded-lg flex flex-col md:flex-row items-center justify-center p-4 md:p-8">
+      <div className="w-full md:w-1/2 flex justify-center mb-4 md:mb-0">
+        <Lottie animationData={ani1} className="w-full max-w-md" />
       </div>
-      <h1 className="flex flex-col gap-5 items-center text-5xl text-center font-merienda font-bold border-white border-4 py-6 p-3 leading-relaxed">
-        "Allo Meals: Bringing Gourmet Delights Right to Your Seat, One
-        Irresistible Bite at a Time!"
+      <div className="w-full md:w-1/2 flex flex-col items-center text-center">
+        <h1 className="text-3xl md:text-5xl font-merienda font-bold border-white border-4 py-4 px-6 leading-relaxed mb-4 md:mb-6">
+          "Allo Meals: Bringing Gourmet Delights Right to Your Seat, One
+          Irresistible Bite at a Time!"
+        </h1>
         <button
           onClick={onOrderNowClick}
-          className="bg-black w-[30%] text-3xl hover:text-black hover:scale-110 transition-all duration-200 hover:bg-green-500 border-2 border-black p-1 font-mono text-green-500"
+          className="bg-black text-2xl md:text-3xl text-green-500 hover:text-black hover:bg-green-500 border-2 border-black py-2 px-4 md:py-3 md:px-6 font-mono hover:scale-110 transition-all duration-200"
         >
           Order Now
         </button>
-      </h1>
+      </div>
     </div>
   );
 };
